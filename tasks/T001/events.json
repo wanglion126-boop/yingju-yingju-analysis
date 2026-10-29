@@ -1,0 +1,609 @@
+{
+  "schemaVersion": "1.0.0",
+  "events": [
+    {
+      "eventId": "E001",
+      "occurredAt": {
+        "kind": "exact",
+        "seconds": 310
+      },
+      "knownAt": {
+        "kind": "exact",
+        "seconds": 310
+      },
+      "sequenceIndex": 1,
+      "actorRef": "A0",
+      "targetRefs": [
+        "A1",
+        "B1"
+      ],
+      "locationRef": "L2",
+      "action": [
+        {
+          "type": "entity",
+          "ref": "A0"
+        },
+        {
+          "type": "text",
+          "text": "与"
+        },
+        {
+          "type": "entity",
+          "ref": "A1"
+        },
+        {
+          "type": "text",
+          "text": "在"
+        },
+        {
+          "type": "entity",
+          "ref": "L2"
+        },
+        {
+          "type": "text",
+          "text": "施压，"
+        },
+        {
+          "type": "entity",
+          "ref": "B1"
+        },
+        {
+          "type": "text",
+          "text": "在该处防守。"
+        }
+      ],
+      "stateChanges": [],
+      "observationStatus": "input_fact",
+      "relatedEvidence": [
+        {
+          "evidenceId": "EV-E001",
+          "sourceLabel": "request.md：虚构演示输入记录",
+          "excerpt": [
+            {
+              "type": "entity",
+              "ref": "A0"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "entity",
+              "ref": "A1"
+            },
+            {
+              "type": "text",
+              "text": "在"
+            },
+            {
+              "type": "entity",
+              "ref": "L2"
+            },
+            {
+              "type": "text",
+              "text": "施压，"
+            },
+            {
+              "type": "entity",
+              "ref": "B1"
+            },
+            {
+              "type": "text",
+              "text": "在该处防守。"
+            }
+          ]
+        }
+      ],
+      "unresolvedItems": []
+    },
+    {
+      "eventId": "E002",
+      "occurredAt": {
+        "kind": "unknown"
+      },
+      "knownAt": {
+        "kind": "exact",
+        "seconds": 310
+      },
+      "sequenceIndex": 2,
+      "actorRef": null,
+      "targetRefs": [
+        "B-J"
+      ],
+      "locationRef": "L3",
+      "action": [
+        {
+          "type": "entity",
+          "ref": "B-J"
+        },
+        {
+          "type": "text",
+          "text": "最后在"
+        },
+        {
+          "type": "entity",
+          "ref": "L3"
+        },
+        {
+          "type": "text",
+          "text": "被观察到；该次观察发生时间未提供，后续位置未知。"
+        }
+      ],
+      "stateChanges": [],
+      "observationStatus": "input_fact",
+      "relatedEvidence": [
+        {
+          "evidenceId": "EV-E002",
+          "sourceLabel": "request.md：虚构演示输入记录",
+          "excerpt": [
+            {
+              "type": "entity",
+              "ref": "B-J"
+            },
+            {
+              "type": "text",
+              "text": "最后在"
+            },
+            {
+              "type": "entity",
+              "ref": "L3"
+            },
+            {
+              "type": "text",
+              "text": "被观察到；该次观察发生时间未提供，后续位置未知。"
+            }
+          ]
+        }
+      ],
+      "unresolvedItems": [
+        {
+          "id": "U-E002-1",
+          "question": [
+            {
+              "type": "text",
+              "text": "最后观察的发生时间与后续有效观察均未知。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "eventId": "E003",
+      "occurredAt": {
+        "kind": "exact",
+        "seconds": 315
+      },
+      "knownAt": {
+        "kind": "exact",
+        "seconds": 315
+      },
+      "sequenceIndex": 3,
+      "actorRef": "A0",
+      "targetRefs": [
+        "B1",
+        "A1"
+      ],
+      "locationRef": null,
+      "action": [
+        {
+          "type": "entity",
+          "ref": "A0"
+        },
+        {
+          "type": "text",
+          "text": "使用"
+        },
+        {
+          "type": "capability",
+          "ref": "K3"
+        },
+        {
+          "type": "text",
+          "text": "；"
+        },
+        {
+          "type": "entity",
+          "ref": "B1"
+        },
+        {
+          "type": "text",
+          "text": "耐久下降，"
+        },
+        {
+          "type": "entity",
+          "ref": "A0"
+        },
+        {
+          "type": "text",
+          "text": "与"
+        },
+        {
+          "type": "entity",
+          "ref": "A1"
+        },
+        {
+          "type": "text",
+          "text": "仍有较好耐久。"
+        }
+      ],
+      "stateChanges": [
+        {
+          "subjectRef": "B1",
+          "attribute": "耐久变化",
+          "before": null,
+          "after": [
+            {
+              "type": "text",
+              "text": "下降，具体数值未知。"
+            }
+          ],
+          "knowledgeStatus": "input_fact"
+        },
+        {
+          "subjectRef": "A0",
+          "attribute": "当前耐久",
+          "before": null,
+          "after": [
+            {
+              "type": "text",
+              "text": "较好，具体数值未知。"
+            }
+          ],
+          "knowledgeStatus": "input_fact"
+        },
+        {
+          "subjectRef": "A1",
+          "attribute": "当前耐久",
+          "before": null,
+          "after": [
+            {
+              "type": "text",
+              "text": "较好，具体数值未知。"
+            }
+          ],
+          "knowledgeStatus": "input_fact"
+        }
+      ],
+      "observationStatus": "input_fact",
+      "relatedEvidence": [
+        {
+          "evidenceId": "EV-E003",
+          "sourceLabel": "request.md：虚构演示输入记录",
+          "excerpt": [
+            {
+              "type": "entity",
+              "ref": "A0"
+            },
+            {
+              "type": "text",
+              "text": "使用"
+            },
+            {
+              "type": "capability",
+              "ref": "K3"
+            },
+            {
+              "type": "text",
+              "text": "；"
+            },
+            {
+              "type": "entity",
+              "ref": "B1"
+            },
+            {
+              "type": "text",
+              "text": "耐久下降，"
+            },
+            {
+              "type": "entity",
+              "ref": "A0"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "entity",
+              "ref": "A1"
+            },
+            {
+              "type": "text",
+              "text": "仍有较好耐久。"
+            }
+          ]
+        }
+      ],
+      "unresolvedItems": [
+        {
+          "id": "U-E003-1",
+          "question": [
+            {
+              "type": "capability",
+              "ref": "K3"
+            },
+            {
+              "type": "text",
+              "text": "的具体效果、是否控制命中及使用后能力可用性未知。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "eventId": "E004",
+      "occurredAt": {
+        "kind": "exact",
+        "seconds": 318
+      },
+      "knownAt": {
+        "kind": "exact",
+        "seconds": 318
+      },
+      "sequenceIndex": 4,
+      "actorRef": null,
+      "targetRefs": [
+        "P-L2-01"
+      ],
+      "locationRef": "L2",
+      "action": [
+        {
+          "type": "entity",
+          "ref": "L2"
+        },
+        {
+          "type": "text",
+          "text": "当前推进单位"
+        },
+        {
+          "type": "entity",
+          "ref": "P-L2-01"
+        },
+        {
+          "type": "text",
+          "text": "被清除；清除者未提供。"
+        }
+      ],
+      "stateChanges": [
+        {
+          "subjectRef": "P-L2-01",
+          "attribute": "存在状态",
+          "before": null,
+          "after": [
+            {
+              "type": "text",
+              "text": "被清除。"
+            }
+          ],
+          "knowledgeStatus": "input_fact"
+        }
+      ],
+      "observationStatus": "input_fact",
+      "relatedEvidence": [
+        {
+          "evidenceId": "EV-E004",
+          "sourceLabel": "request.md：虚构演示输入记录",
+          "excerpt": [
+            {
+              "type": "entity",
+              "ref": "L2"
+            },
+            {
+              "type": "text",
+              "text": "当前推进单位"
+            },
+            {
+              "type": "entity",
+              "ref": "P-L2-01"
+            },
+            {
+              "type": "text",
+              "text": "被清除；清除者未提供。"
+            }
+          ]
+        }
+      ],
+      "unresolvedItems": []
+    },
+    {
+      "eventId": "E005",
+      "occurredAt": {
+        "kind": "unknown"
+      },
+      "knownAt": {
+        "kind": "exact",
+        "seconds": 318
+      },
+      "sequenceIndex": 5,
+      "actorRef": null,
+      "targetRefs": [],
+      "locationRef": "L1",
+      "action": [
+        {
+          "type": "entity",
+          "ref": "L1"
+        },
+        {
+          "type": "text",
+          "text": "可能出现下一轮推进机会，具体到达时间未知。"
+        }
+      ],
+      "stateChanges": [],
+      "observationStatus": "hypothesis",
+      "relatedEvidence": [
+        {
+          "evidenceId": "EV-E005",
+          "sourceLabel": "request.md：虚构演示输入记录",
+          "excerpt": [
+            {
+              "type": "entity",
+              "ref": "L1"
+            },
+            {
+              "type": "text",
+              "text": "可能出现下一轮推进机会，具体到达时间未知。"
+            }
+          ]
+        }
+      ],
+      "unresolvedItems": [
+        {
+          "id": "U-E005-1",
+          "question": [
+            {
+              "type": "text",
+              "text": "下一轮推进机会是否出现及具体到达时间未知。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "eventId": "E006",
+      "occurredAt": {
+        "kind": "exact",
+        "seconds": 320
+      },
+      "knownAt": {
+        "kind": "exact",
+        "seconds": 320
+      },
+      "sequenceIndex": 6,
+      "actorRef": "A0",
+      "targetRefs": [],
+      "locationRef": "L2",
+      "action": [
+        {
+          "type": "entity",
+          "ref": "A0"
+        },
+        {
+          "type": "text",
+          "text": "继续停留"
+        },
+        {
+          "type": "entity",
+          "ref": "L2"
+        },
+        {
+          "type": "text",
+          "text": "。"
+        }
+      ],
+      "stateChanges": [],
+      "observationStatus": "input_fact",
+      "relatedEvidence": [
+        {
+          "evidenceId": "EV-E006",
+          "sourceLabel": "request.md：虚构演示输入记录",
+          "excerpt": [
+            {
+              "type": "entity",
+              "ref": "A0"
+            },
+            {
+              "type": "text",
+              "text": "继续停留"
+            },
+            {
+              "type": "entity",
+              "ref": "L2"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "unresolvedItems": [
+        {
+          "id": "U-E006-1",
+          "question": [
+            {
+              "type": "entity",
+              "ref": "A1"
+            },
+            {
+              "type": "text",
+              "text": "此时是否仍能参与未知。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "eventId": "E007",
+      "occurredAt": {
+        "kind": "exact",
+        "seconds": 325
+      },
+      "knownAt": {
+        "kind": "exact",
+        "seconds": 325
+      },
+      "sequenceIndex": 7,
+      "actorRef": "B2",
+      "targetRefs": [],
+      "locationRef": "L2",
+      "action": [
+        {
+          "type": "entity",
+          "ref": "B2"
+        },
+        {
+          "type": "text",
+          "text": "在"
+        },
+        {
+          "type": "entity",
+          "ref": "L2"
+        },
+        {
+          "type": "text",
+          "text": "出现；该信息此时才获知，此前准确位置未知。"
+        }
+      ],
+      "stateChanges": [],
+      "observationStatus": "input_fact",
+      "relatedEvidence": [
+        {
+          "evidenceId": "EV-E007",
+          "sourceLabel": "request.md：虚构演示输入记录",
+          "excerpt": [
+            {
+              "type": "entity",
+              "ref": "B2"
+            },
+            {
+              "type": "text",
+              "text": "在"
+            },
+            {
+              "type": "entity",
+              "ref": "L2"
+            },
+            {
+              "type": "text",
+              "text": "出现；该信息此时才获知，此前准确位置未知。"
+            }
+          ]
+        }
+      ],
+      "unresolvedItems": [
+        {
+          "id": "U-E007-1",
+          "question": [
+            {
+              "type": "entity",
+              "ref": "B2"
+            },
+            {
+              "type": "text",
+              "text": "此前的准确位置与路线未知，不能倒推。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

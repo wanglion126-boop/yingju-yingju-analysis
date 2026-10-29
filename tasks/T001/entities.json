@@ -1,0 +1,371 @@
+{
+  "schemaVersion": "1.0.0",
+  "entities": [
+    {
+      "id": "A0",
+      "category": "actor",
+      "side": "A",
+      "neutralLabel": "主要分析主体",
+      "description": [
+        {
+          "type": "text",
+          "text": "本任务的主要分析单位。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "A1",
+      "category": "actor",
+      "side": "A",
+      "neutralLabel": "同侧单位一",
+      "description": [
+        {
+          "type": "text",
+          "text": "与主要分析主体协作的单位；后续参与能力未知。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "B1",
+      "category": "actor",
+      "side": "B",
+      "neutralLabel": "对侧单位一",
+      "description": [
+        {
+          "type": "text",
+          "text": "输入中的对侧防守单位。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "B2",
+      "category": "actor",
+      "side": "B",
+      "neutralLabel": "对侧单位二",
+      "description": [
+        {
+          "type": "text",
+          "text": "在后续记录中出现，此前准确位置未知。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "A-J",
+      "category": "role",
+      "side": "A",
+      "neutralLabel": "同侧角色引用",
+      "description": [
+        {
+          "type": "text",
+          "text": "角色引用，不等于具体身份；未绑定具体实例。"
+        }
+      ],
+      "entityKind": "role",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "B-J",
+      "category": "role",
+      "side": "B",
+      "neutralLabel": "对侧角色引用",
+      "description": [
+        {
+          "type": "text",
+          "text": "角色引用，不等于具体身份；最后观察不代表当前位置。"
+        }
+      ],
+      "entityKind": "role",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "A0-C",
+      "category": "collaborative_unit",
+      "side": "A",
+      "neutralLabel": "可部署协同单位",
+      "description": [
+        {
+          "type": "text",
+          "text": "仅登记可部署单位，不代表已部署；数量和状态关系未配置。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": null,
+      "ownerRef": "A0",
+      "locationRef": null
+    },
+    {
+      "id": "L1",
+      "category": "channel",
+      "side": "neutral",
+      "neutralLabel": "通道一",
+      "description": [
+        {
+          "type": "text",
+          "text": "下一轮推进机会仅为可能，具体到达时间未知。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "L2",
+      "category": "channel",
+      "side": "neutral",
+      "neutralLabel": "通道二",
+      "description": [
+        {
+          "type": "text",
+          "text": "当前施压位置。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "L3",
+      "category": "channel",
+      "side": "neutral",
+      "neutralLabel": "通道三",
+      "description": [
+        {
+          "type": "text",
+          "text": "最后观察涉及的通道，不表示当前确定位置。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "TYPE-DEF",
+      "category": "defensive_node",
+      "side": "not_applicable",
+      "neutralLabel": "固定防守节点类型",
+      "description": [
+        {
+          "type": "text",
+          "text": "类型定义；本任务未提供具体节点实例。"
+        }
+      ],
+      "entityKind": "type",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "TYPE-RES",
+      "category": "resource_unit",
+      "side": "not_applicable",
+      "neutralLabel": "周期资源单位类型",
+      "description": [
+        {
+          "type": "text",
+          "text": "类型定义；本任务未提供资源实例、周期或安全性。"
+        }
+      ],
+      "entityKind": "type",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "TYPE-ADV",
+      "category": "advancing_unit",
+      "side": "not_applicable",
+      "neutralLabel": "周期推进单位类型",
+      "description": [
+        {
+          "type": "text",
+          "text": "类型定义；具体实例须独立编号。"
+        }
+      ],
+      "entityKind": "type",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "TYPE-STATE",
+      "category": "status",
+      "side": "not_applicable",
+      "neutralLabel": "增益与数值状态类型",
+      "description": [
+        {
+          "type": "text",
+          "text": "类型定义；不预设数值或增益实例。"
+        }
+      ],
+      "entityKind": "type",
+      "typeRef": null,
+      "ownerRef": null,
+      "locationRef": null
+    },
+    {
+      "id": "P-L2-01",
+      "category": "advancing_unit",
+      "side": "unknown",
+      "neutralLabel": "当前推进单位",
+      "description": [
+        {
+          "type": "text",
+          "text": "虚构演示中的当前推进实例；所属侧、耐久与周期数值未提供。"
+        }
+      ],
+      "entityKind": "instance",
+      "typeRef": "TYPE-ADV",
+      "ownerRef": null,
+      "locationRef": "L2"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "K1",
+      "ownerRef": "A0",
+      "neutralLabel": "区域作用能力",
+      "description": [
+        {
+          "type": "text",
+          "text": "区域作用，具体效果待配置。"
+        }
+      ],
+      "configurationStatus": "initial_abstract_model",
+      "parameters": [
+        {
+          "name": "具体效果",
+          "status": "unconfigured",
+          "value": null,
+          "unit": null
+        },
+        {
+          "name": "冷却时间",
+          "status": "unknown",
+          "value": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "id": "K2",
+      "ownerRef": "A0",
+      "neutralLabel": "位置调整能力",
+      "description": [
+        {
+          "type": "text",
+          "text": "具有位置调整作用，具体效果待配置。"
+        }
+      ],
+      "configurationStatus": "initial_abstract_model",
+      "parameters": [
+        {
+          "name": "具体效果",
+          "status": "unconfigured",
+          "value": null,
+          "unit": null
+        },
+        {
+          "name": "冷却时间",
+          "status": "unknown",
+          "value": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "id": "K3",
+      "ownerRef": "A0",
+      "neutralLabel": "协同部署与控制能力",
+      "description": [
+        {
+          "type": "text",
+          "text": "可部署协同单位并产生控制，具体效果待配置；记录使用不证明控制命中。"
+        }
+      ],
+      "configurationStatus": "initial_abstract_model",
+      "parameters": [
+        {
+          "name": "具体效果",
+          "status": "unconfigured",
+          "value": null,
+          "unit": null
+        },
+        {
+          "name": "冷却时间",
+          "status": "unknown",
+          "value": null,
+          "unit": null
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "R-MODEL",
+      "status": "configured",
+      "source": "initial_abstract_model",
+      "description": [
+        {
+          "type": "text",
+          "text": "仅采用初始抽象模型：具有一定距离的持续输出，主体与协同单位可分工；可被任务配置覆盖，不包含数值参数。"
+        }
+      ]
+    },
+    {
+      "id": "R-PARAMETERS",
+      "status": "unconfigured",
+      "source": "task_configuration",
+      "description": [
+        {
+          "type": "text",
+          "text": "未配置具体距离、冷却、持续时间、收益与推进机制。"
+        }
+      ]
+    },
+    {
+      "id": "R-RELATION",
+      "status": "unknown",
+      "source": "task_configuration",
+      "description": [
+        {
+          "type": "text",
+          "text": "主体与协同单位之间的耐久、回收和消失关系未知。"
+        }
+      ]
+    },
+    {
+      "id": "R-TIME-ORIGIN",
+      "status": "configured",
+      "source": "task_configuration",
+      "description": [
+        {
+          "type": "text",
+          "text": "虚构演示计时从00:00开始，数值单位为秒；明确时间记录同刻可知，未知时间另行标记。"
+        }
+      ]
+    }
+  ]
+}

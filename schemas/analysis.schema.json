@@ -1,0 +1,566 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:yingju-analysis:schema:analysis:1.0.0",
+  "title": "analysis 1.0.0",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "analysisId": {
+      "$ref": "#/$defs/id"
+    },
+    "taskId": {
+      "type": "string",
+      "pattern": "^T[0-9]{3,}$"
+    },
+    "status": {
+      "enum": [
+        "pending_review",
+        "needs_revision",
+        "reviewed_accepted",
+        "reviewed_rejected"
+      ],
+      "default": "pending_review"
+    },
+    "stage": {
+      "enum": [
+        "information_organization",
+        "action_analysis"
+      ]
+    },
+    "inputFacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      },
+      "minItems": 0
+    },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      },
+      "minItems": 0
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      },
+      "minItems": 0
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      },
+      "minItems": 0
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "eventRef": {
+            "$ref": "#/$defs/id"
+          },
+          "decisionAt": {
+            "$ref": "#/$defs/time"
+          },
+          "knowledgeCutoff": {
+            "$ref": "#/$defs/time"
+          },
+          "knownState": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/claim"
+            },
+            "minItems": 0
+          },
+          "behaviors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "enum": [
+                    "A",
+                    "B",
+                    "neutral",
+                    "unknown",
+                    "not_applicable"
+                  ]
+                },
+                "actorRef": {
+                  "$ref": "#/$defs/nullableEntityRef"
+                },
+                "action": {
+                  "$ref": "#/$defs/richText"
+                },
+                "evidenceEventRefs": {
+                  "$ref": "#/$defs/eventRefs"
+                }
+              },
+              "required": [
+                "side",
+                "actorRef",
+                "action",
+                "evidenceEventRefs"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          },
+          "conditionChanges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/claim"
+            },
+            "minItems": 0
+          },
+          "actualAction": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/richText"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/actionOption"
+            },
+            "minItems": 0
+          },
+          "laterFeedback": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "eventRef": {
+                  "$ref": "#/$defs/id"
+                },
+                "knownAt": {
+                  "$ref": "#/$defs/time"
+                },
+                "updateTrigger": {
+                  "$ref": "#/$defs/richText"
+                }
+              },
+              "required": [
+                "eventRef",
+                "knownAt",
+                "updateTrigger"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "eventRef",
+          "decisionAt",
+          "knowledgeCutoff",
+          "knownState",
+          "behaviors",
+          "conditionChanges",
+          "actualAction",
+          "alternatives",
+          "laterFeedback"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "keyTurningPoint": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "eventRef": {
+              "$ref": "#/$defs/id"
+            },
+            "asOf": {
+              "$ref": "#/$defs/time"
+            },
+            "conditionChange": {
+              "$ref": "#/$defs/richText"
+            },
+            "whyItMatters": {
+              "$ref": "#/$defs/richText"
+            },
+            "evidenceEventRefs": {
+              "$ref": "#/$defs/eventRefs"
+            }
+          },
+          "required": [
+            "eventRef",
+            "asOf",
+            "conditionChange",
+            "whyItMatters",
+            "evidenceEventRefs"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reusableRule": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "condition": {
+              "$ref": "#/$defs/richText"
+            },
+            "action": {
+              "$ref": "#/$defs/richText"
+            },
+            "stopConditions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/richText"
+              },
+              "minItems": 1
+            },
+            "limits": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/richText"
+              },
+              "minItems": 1
+            },
+            "evidenceEventRefs": {
+              "$ref": "#/$defs/eventRefs"
+            },
+            "reviewStatus": {
+              "const": "pending_review",
+              "default": "pending_review"
+            }
+          },
+          "required": [
+            "condition",
+            "action",
+            "stopConditions",
+            "limits",
+            "evidenceEventRefs",
+            "reviewStatus"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "missingInformation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "$ref": "#/$defs/richText"
+          },
+          "whyItMatters": {
+            "$ref": "#/$defs/richText"
+          }
+        },
+        "required": [
+          "question",
+          "whyItMatters"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 3
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "analysisId",
+    "taskId",
+    "status",
+    "stage",
+    "inputFacts",
+    "hypotheses",
+    "unknowns",
+    "conflicts",
+    "timeline",
+    "keyTurningPoint",
+    "reusableRule",
+    "missingInformation"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+    },
+    "nullableEntityRef": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "time": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "exact"
+            },
+            "seconds": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "kind",
+            "seconds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "interval"
+            },
+            "startSeconds": {
+              "type": "number",
+              "minimum": 0
+            },
+            "endSeconds": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "kind",
+            "startSeconds",
+            "endSeconds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "unknown"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "fragment": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "text"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "type",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "entity"
+            },
+            "ref": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "type",
+            "ref"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "capability"
+            },
+            "ref": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "type",
+            "ref"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "richText": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fragment"
+      },
+      "minItems": 1
+    },
+    "entityRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "eventRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "claim": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "$ref": "#/$defs/richText"
+        },
+        "evidenceEventRefs": {
+          "$ref": "#/$defs/eventRefs"
+        },
+        "asOf": {
+          "$ref": "#/$defs/time"
+        }
+      },
+      "required": [
+        "content",
+        "evidenceEventRefs",
+        "asOf"
+      ],
+      "additionalProperties": false
+    },
+    "actionOption": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "$ref": "#/$defs/richText"
+        },
+        "actorRef": {
+          "$ref": "#/$defs/nullableEntityRef"
+        },
+        "targetRefs": {
+          "$ref": "#/$defs/entityRefs"
+        },
+        "locationRef": {
+          "$ref": "#/$defs/nullableEntityRef"
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/richText"
+          },
+          "minItems": 1
+        },
+        "costs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/richText"
+          },
+          "minItems": 1
+        },
+        "expectedEffects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/richText"
+          },
+          "minItems": 1
+        },
+        "stopConditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/richText"
+          },
+          "minItems": 1
+        },
+        "rationale": {
+          "$ref": "#/$defs/richText"
+        },
+        "evidenceEventRefs": {
+          "$ref": "#/$defs/eventRefs"
+        }
+      },
+      "required": [
+        "action",
+        "actorRef",
+        "targetRefs",
+        "locationRef",
+        "prerequisites",
+        "costs",
+        "expectedEffects",
+        "stopConditions",
+        "rationale",
+        "evidenceEventRefs"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "information_organization"
+          }
+        },
+        "required": [
+          "stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "timeline": {
+            "maxItems": 0
+          },
+          "keyTurningPoint": {
+            "type": "null"
+          },
+          "reusableRule": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "timeline": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

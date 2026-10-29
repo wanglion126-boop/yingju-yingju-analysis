@@ -1,0 +1,12 @@
+{
+  "taskId": "T001",
+  "schemaVersion": "1.0.0",
+  "contextVersion": "1.0.0",
+  "entityFile": "entities.json",
+  "eventFile": "events.json",
+  "requestFile": "request.md",
+  "relatedCaseIds": [
+    "C001"
+  ],
+  "inputStatus": "pending_check"
+}

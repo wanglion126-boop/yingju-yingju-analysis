@@ -1,0 +1,462 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:yingju-analysis:schema:entities:1.0.0",
+  "title": "entities 1.0.0",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "category": {
+            "enum": [
+              "actor",
+              "role",
+              "collaborative_unit",
+              "channel",
+              "defensive_node",
+              "resource_unit",
+              "advancing_unit",
+              "status"
+            ]
+          },
+          "side": {
+            "enum": [
+              "A",
+              "B",
+              "neutral",
+              "unknown",
+              "not_applicable"
+            ]
+          },
+          "neutralLabel": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "description": {
+            "$ref": "#/$defs/richText"
+          },
+          "entityKind": {
+            "enum": [
+              "instance",
+              "role",
+              "type"
+            ]
+          },
+          "typeRef": {
+            "$ref": "#/$defs/nullableEntityRef"
+          },
+          "ownerRef": {
+            "$ref": "#/$defs/nullableEntityRef"
+          },
+          "locationRef": {
+            "$ref": "#/$defs/nullableEntityRef"
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "side",
+          "neutralLabel",
+          "description",
+          "entityKind",
+          "typeRef",
+          "ownerRef",
+          "locationRef"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "entityKind": {
+                  "const": "role"
+                }
+              },
+              "required": [
+                "entityKind"
+              ]
+            },
+            "then": {
+              "properties": {
+                "category": {
+                  "const": "role"
+                },
+                "typeRef": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "category": {
+                  "const": "role"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            },
+            "then": {
+              "properties": {
+                "entityKind": {
+                  "const": "role"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "entityKind": {
+                  "const": "type"
+                }
+              },
+              "required": [
+                "entityKind"
+              ]
+            },
+            "then": {
+              "properties": {
+                "typeRef": {
+                  "type": "null"
+                },
+                "ownerRef": {
+                  "type": "null"
+                },
+                "locationRef": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "ownerRef": {
+            "$ref": "#/$defs/id"
+          },
+          "neutralLabel": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "description": {
+            "$ref": "#/$defs/richText"
+          },
+          "configurationStatus": {
+            "enum": [
+              "initial_abstract_model",
+              "configured",
+              "unknown",
+              "unconfigured"
+            ]
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "status": {
+                  "enum": [
+                    "configured",
+                    "unknown",
+                    "unconfigured"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "number",
+                    "string",
+                    "null"
+                  ]
+                },
+                "unit": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1,
+                      "pattern": "\\S"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "status",
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "status": {
+                        "const": "configured"
+                      }
+                    },
+                    "required": [
+                      "status"
+                    ]
+                  },
+                  "then": {
+                    "properties": {
+                      "value": {
+                        "oneOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 1,
+                            "pattern": "\\S"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "else": {
+                    "properties": {
+                      "value": {
+                        "type": "null"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "id",
+          "ownerRef",
+          "neutralLabel",
+          "description",
+          "configurationStatus",
+          "parameters"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "status": {
+            "enum": [
+              "configured",
+              "unknown",
+              "unconfigured"
+            ]
+          },
+          "source": {
+            "enum": [
+              "initial_abstract_model",
+              "task_configuration"
+            ]
+          },
+          "description": {
+            "$ref": "#/$defs/richText"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "source",
+          "description"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "entities",
+    "capabilities",
+    "rules"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+    },
+    "nullableEntityRef": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "time": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "exact"
+            },
+            "seconds": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "kind",
+            "seconds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "interval"
+            },
+            "startSeconds": {
+              "type": "number",
+              "minimum": 0
+            },
+            "endSeconds": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "kind",
+            "startSeconds",
+            "endSeconds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "unknown"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "fragment": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "text"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "type",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "entity"
+            },
+            "ref": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "type",
+            "ref"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "capability"
+            },
+            "ref": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "type",
+            "ref"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "richText": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fragment"
+      },
+      "minItems": 1
+    },
+    "entityRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "eventRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  }
+}
